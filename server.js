@@ -1,47 +1,21 @@
+import dotenv from "dotenv";
 import mongoose from "mongoose";
 
-const recipeSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-    },
+import app from "./app.js";
 
-    description: {
-      type: String,
-      required: true,
-    },
+dotenv.config();
 
-    ingredients: {
-      type: [String],
-      required: true,
-    },
+const PORT = process.env.PORT || 5000;
 
-    steps: {
-      type: [String],
-      required: true,
-    },
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("MongoDB connected");
 
-    time: {
-      type: String,
-      required: true,
-    },
-
-    difficulty: {
-      type: String,
-      required: true,
-    },
-
-    preferences: {
-      type: String,
-      default: "",
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
-
-const Recipe = mongoose.model("Recipe", recipeSchema);
-
-export default Recipe;
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error("MongoDB connection failed:", error);
+  });
