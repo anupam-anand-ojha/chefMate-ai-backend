@@ -1,6 +1,6 @@
 import { generateRecipe } from "../services/ai.service";
 
-const recipeController = async (req, res) => {
+export const recipeController = async (req, res) => {
     try{
         const recipeData = req.body
         const result = generateRecipe(recipeData);
