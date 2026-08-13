@@ -4,7 +4,7 @@ import recipePrompt from "../prompts/recipe.prompt.js";
 
 
 const ai = new GoogleGenAI({
-    apiKey : process.env.Gemini_API_Key
+    apiKey : process.env.GEMINI_API_KEY
 })
 
 export const generateRecipe = async (recipeData) => {

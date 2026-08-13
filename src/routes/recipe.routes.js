@@ -5,6 +5,6 @@ import { recipeController } from "../controllers/recipe.controller.js";
 
 const recipeRoutes = express.Router();
 
-router.post("/generate", recipeController);
+recipeRoutes.post("/generate", recipeController);
 
 export default recipeRoutes;

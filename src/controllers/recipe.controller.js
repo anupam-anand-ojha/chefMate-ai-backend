@@ -1,9 +1,10 @@
-import { generateRecipe } from "../services/ai.service";
+import { generateRecipe } from "../services/ai.service.js";
 
 export const recipeController = async (req, res) => {
+
     try{
         const recipeData = req.body
-        const result = generateRecipe(recipeData);
+        const result = await generateRecipe(recipeData);
 
         res.status(200).json(result)
     }
